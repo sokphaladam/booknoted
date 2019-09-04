@@ -1,0 +1,33 @@
+{
+  "name": "knexts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/faker": "^4.1.5",
+    "@types/node": "^12.7.4",
+    "apollo-server": "^2.9.3",
+    "apollo-server-express": "^2.9.3",
+    "body-parser": "^1.19.0",
+    "dataloader": "^1.4.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "graphql": "^14.5.4",
+    "graphql-import-node": "^0.0.4",
+    "graphql-tools": "^4.0.5",
+    "knex": "^0.19.3",
+    "mysql2": "^1.7.0",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.42",
+    "typescript": "^3.6.2",
+    "typescript-node": "^0.1.3",
+    "typescript-register": "^1.1.0",
+    "typescript-require": "^0.2.10"
+  },
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpileOnly ./src/index.ts"
+  },
+  "devDependencies": {
+    "@graphql-codegen/typescript-graphql-files-modules": "^1.7.0"
+  }
+}
