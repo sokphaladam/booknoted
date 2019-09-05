@@ -1,19 +1,24 @@
-type User_Has_Friend {
-    user_id: Int,
-    friend_id: Int
-}
-
 type User {
     id: ID,
     first_name: String,
     last_name: String,
     gender: String,
     username: String,
-    password: String,
     picture: String,
     created_at: String,
     updated_at: String,
     friends: [User]
+}
+
+type Book {
+    id: ID,
+    title: String,
+    picture: String,
+    love: Int,
+    comment: Int,
+    created_at: String,
+    updated_at: String,
+    user: User
 }
 
 input UserInput {
@@ -24,11 +29,22 @@ input UserInput {
     password: String!
 }
 
+input BookInput {
+    title: String,
+    picture: String,
+    love: Int,
+    comment: Int  
+}
+
 type Query {
     getUserList: [User],
-    getUser(id: Int!): User
+    getUser(id: Int!): User,
+    getBookList: [Book],
+    me: User
 }
 
 type Mutation {
-    createUser(data: UserInput!): Boolean
+    createUser(data: UserInput!): Boolean,
+    login(username: String!, password: String!): String,
+    createBook(data: BookInput!): Boolean,
 }
