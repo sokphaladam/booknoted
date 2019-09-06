@@ -1,3 +1,5 @@
+import { Stream } from "stream";
+
 export declare namespace Graph {
 
     export interface Friend {
@@ -16,5 +18,12 @@ export declare namespace Graph {
         created_at: string,
         updated_at: string,
         friends: any
+    }
+
+    export interface File {
+        filename: string,
+        mimetype: string,
+        encoding: string,
+        createReadStream: any
     }
 }

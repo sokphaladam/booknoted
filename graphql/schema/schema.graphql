@@ -1,3 +1,11 @@
+type File {
+    id: ID!
+    path: String!
+    filename: String!
+    mimetype: String!
+    encoding: String!
+}
+
 type User {
     id: ID,
     first_name: String,
@@ -21,6 +29,13 @@ type Book {
     user: User
 }
 
+type Picture {
+    id: ID,
+    filename: String,
+    created_at: String,
+    updated_at: String
+}
+
 input UserInput {
     first_name: String!,
     last_name: String!,
@@ -40,11 +55,13 @@ type Query {
     getUserList: [User],
     getUser(id: Int!): User,
     getBookList: [Book],
-    me: User
+    me: User,
+    getPictureList: [Picture]
 }
 
 type Mutation {
     createUser(data: UserInput!): Boolean,
     login(username: String!, password: String!): String,
     createBook(data: BookInput!): Boolean,
+    singleUpload(file: Upload!): String
 }

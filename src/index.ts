@@ -1,9 +1,10 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from 'apollo-server-express';
 const setting = require('../knexfile');
 const knex = require('knex')(setting.development);
 import 'graphql-import-node';
 import { resolvers } from '../graphql/resolvers';
 import { userDataLoader } from '../loaders/dataloader';
+import express from 'express';
 
 const typeDefs = require('../graphql/schema/schema.graphql');
 
@@ -26,6 +27,8 @@ const server = new ApolloServer(
     }
 );
 
-server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-});
+const app = express();
+app.use('/images', express.static('images'));
+server.applyMiddleware({ app, path: '/playground' });
+
+app.listen(4000);

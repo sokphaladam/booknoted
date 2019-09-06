@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js add @types/dataloader
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add @types/cloudinary
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/sokphaladam/.dotnet/tools:/home/sokphaladam/Android/Sdk/emulator:/home/sokphaladam/Android/Sdk/tools:/home/sokphaladam/Android/Sdk/tools/bin:/home/sokphaladam/Android/Sdk/platform-tools:/home/sokphaladam/Android/Sdk/emulator:/home/sokphaladam/Android/Sdk/tools:/home/sokphaladam/Android/Sdk/tools/bin:/home/sokphaladam/Android/Sdk/platform-tools
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fdataloader: Not found
+  Error: https://registry.yarnpkg.com/@types%2fcloudinary: Not found
       at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66830:18)
       at Request.self.callback (/usr/share/yarn/lib/cli.js:140464:22)
       at Request.emit (events.js:209:13)
@@ -35,9 +35,12 @@ npm manifest:
     "dependencies": {
       "@types/faker": "^4.1.5",
       "@types/node": "^12.7.4",
+      "@types/password-hash": "^1.2.20",
       "apollo-server": "^2.9.3",
       "apollo-server-express": "^2.9.3",
       "body-parser": "^1.19.0",
+      "cloudinary": "^1.14.0",
+      "cloudinary-core": "^2.7.4",
       "dataloader": "^1.4.0",
       "express": "^4.17.1",
       "faker": "^4.1.0",
@@ -46,6 +49,7 @@ npm manifest:
       "graphql-tools": "^4.0.5",
       "knex": "^0.19.3",
       "mysql2": "^1.7.0",
+      "password-hash": "^1.2.2",
       "ts-node": "^8.3.0",
       "ts-node-dev": "^1.0.0-pre.42",
       "typescript": "^3.6.2",
@@ -278,6 +282,11 @@ Lockfile:
     version "10.14.17"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.17.tgz#b96d4dd3e427382482848948041d3754d40fd5ce"
     integrity sha512-p/sGgiPaathCfOtqu2fx5Mu1bcjuP8ALFg4xpGgNkcin7LwRyzUKniEHBKdcE1RPsenq5JVPIpMTJSygLboygQ==
+  
+  "@types/password-hash@^1.2.20":
+    version "1.2.20"
+    resolved "https://registry.yarnpkg.com/@types/password-hash/-/password-hash-1.2.20.tgz#29149b2a315975254c9c4692eea5cd2ac0992ddf"
+    integrity sha512-JyJQu6VWgrLTxrXArOJQ1wBocTRRPjZ2RASPeDhSIVba2e7CZDrOxaipd1k0LwNmcgtwzihEMnhgoxoZe624SQ==
   
   "@types/range-parser@*":
     version "1.2.3"
@@ -774,6 +783,19 @@ Lockfile:
       define-property "^0.2.5"
       isobject "^3.0.0"
       static-extend "^0.1.1"
+  
+  cloudinary-core@^2.7.4:
+    version "2.7.4"
+    resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.7.4.tgz#35db9b8a851ca7ef9feace6e98496a8455de6663"
+    integrity sha512-toaZSJVvpY1bQhqhin6atI1DPfloE/wOS9T6lriHsZVvdNyQu+c9AyNznM5/4NquI2oLr4G2gGgeX0tImnFUaQ==
+  
+  cloudinary@^1.14.0:
+    version "1.14.0"
+    resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.14.0.tgz#40f66d6b34169849ae98ca9e56bc99b2b26dd48f"
+    integrity sha512-auJY4aD1UGnQTD2iy6kuTA+FJsqyrr9svG12WYSPAO6oRGRf+16UFDDBNuRMm37wj8Tyn8LyiED0b+Jha36ORA==
+    dependencies:
+      lodash "^4.17.11"
+      q "^1.5.1"
   
   collection-visit@^1.0.0:
     version "1.0.0"
@@ -1832,7 +1854,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
     integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
   
-  lodash@^4.17.15:
+  lodash@^4.17.11, lodash@^4.17.15:
     version "4.17.15"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
     integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -2230,6 +2252,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
     integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
   
+  password-hash@^1.2.2:
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/password-hash/-/password-hash-1.2.2.tgz#3b451f014de4b2e1ebfa0e5493b9517b1063af1d"
+    integrity sha1-O0UfAU3ksuHr+g5Uk7lRexBjrx0=
+  
   path-case@^2.1.0:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/path-case/-/path-case-2.1.1.tgz#94b8037c372d3fe2906e465bb45e25d226e8eea5"
@@ -2338,6 +2365,11 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
     integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
+  
+  q@^1.5.1:
+    version "1.5.1"
+    resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
+    integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
   
   qs@6.7.0:
     version "6.7.0"
