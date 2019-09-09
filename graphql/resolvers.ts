@@ -1,23 +1,14 @@
 const setting = require('../knexfile');
 const knex = require('knex')(setting.development);
 import { createUser, getUserList, getUser, login, me } from '../src/controller/userController';
-import { getBookList, createBook } from '../src/controller/BookController';
+import { getBookList, createBook } from '../src/controller/bookController';
+import { createLove } from '../src/controller/loveController';
 import { Graph } from '../interfaces/graph';
-import multer from 'multer';
 import { createWriteStream } from 'fs';
-import { v4 } from 'uuid';
 import { generate } from '../src/generate';
+import { PubSub } from 'apollo-server-express';
 
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/images/uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-})
-
-var upload = multer({ storage });
+const pubsub = new PubSub();
 
 export const resolvers = {
     Query: {
@@ -34,6 +25,7 @@ export const resolvers = {
         createUser,
         login,
         createBook,
+        createLove,
         singleUpload: async (parent: any, args: any) => {
             const { createReadStream, filename } = await args.file;
             const uuid = generate(8);
@@ -47,6 +39,11 @@ export const resolvers = {
                 created_at: new Date(),
                 updated_at: new Date()
             }).then(() => `/images/${uuid}${filename}`);
+        }
+    },
+    Subscription: {
+        setLove: {
+            subscribe: (parent: any, args: any, ctx: any) => ctx.pubsub.asyncIterator('Love')
         }
     }
 }

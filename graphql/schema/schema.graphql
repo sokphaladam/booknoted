@@ -63,5 +63,10 @@ type Mutation {
     createUser(data: UserInput!): Boolean,
     login(username: String!, password: String!): String,
     createBook(data: BookInput!): Boolean,
-    singleUpload(file: Upload!): String
+    singleUpload(file: Upload!): String,
+    createLove(id: Int!): Boolean,
+}
+
+type Subscription {
+    setLove: [Book]
 }

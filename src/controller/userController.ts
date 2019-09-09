@@ -36,7 +36,7 @@ export const me = async (p: any, args: any, ctx: any, b: any) => {
 }
 
 export const add_friend = async (p: any, args: any, ctx: any, b: any) => {
-
+  
 }
 
 export const confirm_friend = async (p: any, args: any, ctx: any, b: any) => {
