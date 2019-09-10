@@ -3,7 +3,7 @@ const knex = require('knex')(setting.development);
 import { createUser, getUserList, getUser, login, me } from '../src/controller/userController';
 import { getBookList, createBook } from '../src/controller/bookController';
 import { createLove } from '../src/controller/loveController';
-import { Graph } from '../interfaces/graph';
+import { createComment, getCommentList } from '../src/controller/commentController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
 import { PubSub } from 'apollo-server-express';
@@ -16,6 +16,7 @@ export const resolvers = {
         getUser,
         getBookList,
         me,
+        getCommentList,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;
@@ -26,6 +27,7 @@ export const resolvers = {
         login,
         createBook,
         createLove,
+        createComment,
         singleUpload: async (parent: any, args: any) => {
             const { createReadStream, filename } = await args.file;
             const uuid = generate(8);

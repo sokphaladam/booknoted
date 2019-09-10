@@ -36,6 +36,15 @@ type Picture {
     updated_at: String
 }
 
+type Comment {
+    id: ID,
+    book_id: Int,
+    user_id: Int,
+    comment: String,
+    created_at: String,
+    updated_at: String
+}
+
 input UserInput {
     first_name: String!,
     last_name: String!,
@@ -51,12 +60,18 @@ input BookInput {
     comment: Int  
 }
 
+input CommentInput {
+    book_id: Int,
+    comment: String
+}
+
 type Query {
     getUserList: [User],
     getUser(id: Int!): User,
     getBookList: [Book],
     me: User,
-    getPictureList: [Picture]
+    getPictureList: [Picture],
+    getCommentList(book_id: Int!): [Comment]
 }
 
 type Mutation {
@@ -65,6 +80,7 @@ type Mutation {
     createBook(data: BookInput!): Boolean,
     singleUpload(file: Upload!): String,
     createLove(id: Int!): Boolean,
+    createComment(data: CommentInput!): Boolean
 }
 
 type Subscription {
