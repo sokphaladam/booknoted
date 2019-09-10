@@ -43,9 +43,9 @@ export const resolvers = {
             }).then(() => `/images/${uuid}${filename}`);
         }
     },
-    Subscription: {
-        setLove: {
-            subscribe: (parent: any, args: any, ctx: any) => ctx.pubsub.asyncIterator('Love')
-        }
-    }
+    // Subscription: {
+    //     setLove: {
+    //         subscribe: (parent: any, args: any, ctx: any) => ctx.pubsub.asyncIterator('Love')
+    //     }
+    // }
 }

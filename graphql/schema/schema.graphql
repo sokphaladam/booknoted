@@ -83,6 +83,6 @@ type Mutation {
     createComment(data: CommentInput!): Boolean
 }
 
-type Subscription {
-    setLove: [Book]
-}
+# type Subscription {
+#     setLove: [Book]
+# }
