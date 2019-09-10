@@ -1,13 +1,13 @@
 import { ApolloServer, gql, PubSub } from 'apollo-server-express';
-const setting = require('../knexfile');
+const setting = require('./knexfile');
 const knex = require('knex')(setting.development);
 import 'graphql-import-node';
-import { resolvers } from '../graphql/resolvers';
-import { userDataLoader } from '../loaders/dataloader';
+import { resolvers } from './graphql/resolvers';
+import { userDataLoader } from './loaders/dataloader';
 import express from 'express';
 import http from 'http';
 
-const typeDefs = require('../graphql/schema/schema.graphql');
+const typeDefs = require('./graphql/schema/schema.graphql');
 
 const server = new ApolloServer(
     {

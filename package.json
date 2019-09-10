@@ -34,7 +34,7 @@
     "uuid": "^3.3.3"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn --transpileOnly ./src/index.ts"
+    "start": "ts-node-dev --respawn --transpileOnly ./index.ts"
   },
   "devDependencies": {
     "@graphql-codegen/typescript-graphql-files-modules": "^1.7.0"
