@@ -27,3 +27,12 @@ export const getLoveList = async (p: any, args: any, ctx: any) => {
   const data = await knex('love').where('user_id', user.id);
   return data;
 }
+
+export const getLove = async (p: any, args: any, ctx: any) => {
+  const user = await ctx.meLoader();
+  const data = await knex('love').where({
+    user_id: user.id,
+    book_id: args.book_id
+  }).first();
+  return data;
+}

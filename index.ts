@@ -26,7 +26,9 @@ const server = new ApolloServer(
                 return userDataLoader.load(data.id);
             }
 
-            return { userDataLoader, meLoader, pubsub}
+            const token = () => req.query.token;
+
+            return { userDataLoader, meLoader, pubsub, token }
         }
     }
 );

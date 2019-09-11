@@ -26,7 +26,8 @@ type Book {
     comment: Int,
     created_at: String,
     updated_at: String,
-    user: User
+    user: User,
+    isLove: Boolean
 }
 
 type Picture {
@@ -76,10 +77,12 @@ type Query {
     getUserList: [User],
     getUser(id: Int!): User,
     getBookList: [Book],
+    getBook(id: Int!): Book
     me: User,
     getPictureList: [Picture],
     getCommentList(book_id: Int!): [Comment]
     getLoveList: [Love]
+    getLove(book_id: Int!): Love
 }
 
 type Mutation {

@@ -1,23 +1,22 @@
 const setting = require('../knexfile');
 const knex = require('knex')(setting.development);
 import { createUser, getUserList, getUser, login, me } from '../src/controller/userController';
-import { getBookList, createBook } from '../src/controller/bookController';
-import { createLove, getLoveList } from '../src/controller/loveController';
+import { getBookList, createBook, getBook } from '../src/controller/bookController';
+import { createLove, getLoveList, getLove } from '../src/controller/loveController';
 import { createComment, getCommentList } from '../src/controller/commentController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
-import { PubSub } from 'apollo-server-express';
-
-const pubsub = new PubSub();
 
 export const resolvers = {
     Query: {
         getUserList,
         getUser,
         getBookList,
+        getBook,
         me,
         getCommentList,
         getLoveList,
+        getLove,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;
