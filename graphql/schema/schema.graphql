@@ -45,6 +45,13 @@ type Comment {
     updated_at: String
 }
 
+type Love {
+    user_id: Int,
+    book_id: Int,
+    created_at: String,
+    updated_at: String
+}
+
 input UserInput {
     first_name: String!,
     last_name: String!,
@@ -72,6 +79,7 @@ type Query {
     me: User,
     getPictureList: [Picture],
     getCommentList(book_id: Int!): [Comment]
+    getLoveList: [Love]
 }
 
 type Mutation {

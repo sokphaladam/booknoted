@@ -2,7 +2,7 @@ const setting = require('../knexfile');
 const knex = require('knex')(setting.development);
 import { createUser, getUserList, getUser, login, me } from '../src/controller/userController';
 import { getBookList, createBook } from '../src/controller/bookController';
-import { createLove } from '../src/controller/loveController';
+import { createLove, getLoveList } from '../src/controller/loveController';
 import { createComment, getCommentList } from '../src/controller/commentController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
@@ -17,6 +17,7 @@ export const resolvers = {
         getBookList,
         me,
         getCommentList,
+        getLoveList,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;
