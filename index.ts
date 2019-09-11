@@ -9,6 +9,8 @@ import http from 'http';
 
 const typeDefs = require('./graphql/schema/schema.graphql');
 
+const pubsub = new PubSub();
+
 const server = new ApolloServer(
     {
         typeDefs,
@@ -23,8 +25,6 @@ const server = new ApolloServer(
                 const data = await knex('user').where('token', req.query.token).first();
                 return userDataLoader.load(data.id);
             }
-            
-            const pubsub = new PubSub();
 
             return { userDataLoader, meLoader, pubsub}
         }

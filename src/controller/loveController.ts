@@ -15,7 +15,7 @@ export const createLove = async (p: any, args: any, ctx: any) => {
       await knex('book').where('id', args.id).update('love', book.love - 1);
       await knex('love').where({ 'user_id': user.id, 'book_id': args.id }).del();
     }
-    ctx.pubsub.publish('Love', { setLove: await knex('book') })
+    ctx.pubsub.publish('Love', { LoveSubscription: true });
     return true;
   } catch (error) {
     return error;

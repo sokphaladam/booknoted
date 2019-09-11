@@ -14,6 +14,7 @@ export const createComment = async (p: any, args: any, ctx: any) => {
     }).then( async () => {
       await knex('book').update('comment', book.comment + 1);
     })
+    ctx.pubsub.publish('Love', { CommentSubscription: true });
     return true;
   } catch (error) {
     return false;
