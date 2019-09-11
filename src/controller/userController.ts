@@ -9,7 +9,7 @@ export const createUser = async (p: any, args: any) => {
   data.created_at = new Date();
   data.updated_at = new Date();
   data.picture = Faker.image.avatar();
-  const res = await knex('ba').insert(data).then(() => true);
+  const res = await knex('user').insert(data).then(() => true);
   return res;
 }
 
