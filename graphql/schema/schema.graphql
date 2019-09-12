@@ -59,6 +59,7 @@ type Notification {
     type: String,
     on_id: Int,
     status: Boolean,
+    book: Book,
     user: User,
     created_at: String,
     updated_at: String
@@ -94,7 +95,8 @@ type Query {
     getCommentList(book_id: Int!): [Comment]
     getLoveList: [Love]
     getLove(book_id: Int!): Love,
-    getNotificationList: [Notification]
+    getNotificationList: [Notification],
+    getNotificationCount: Int
 }
 
 type Mutation {

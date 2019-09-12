@@ -7,10 +7,23 @@ export const getNotificationList = async (p: any, args: any, ctx: any) => {
   let items: any[] = [];
   data.map((e: any) => {
     e.user = ctx.userDataLoader.load(e.action_by);
+    e.book = knex('book').where('id', e.on_id).first();
     items.push(e);
   });
 
   return items;
+}
+
+export const getNotificationCount = async (p: any, args: any, ctx: any) => {
+  const user = await ctx.meLoader();
+  const data = await knex('notification').where('user_id', user.id);
+  let count: number = 0;
+  data.map((e: any) => {
+    e.status = false;
+    count++;
+  });
+
+  return count;
 }
 
 export const createNotificationList = async (data: any) => {

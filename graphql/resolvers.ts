@@ -4,7 +4,7 @@ import { createUser, getUserList, getUser, login, me } from '../src/controller/u
 import { getBookList, createBook, getBook } from '../src/controller/bookController';
 import { createLove, getLoveList, getLove } from '../src/controller/loveController';
 import { createComment, getCommentList } from '../src/controller/commentController';
-import { getNotificationList, setStatus } from '../src/controller/notificationController';
+import { getNotificationList, setStatus, getNotificationCount } from '../src/controller/notificationController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
 
@@ -19,6 +19,7 @@ export const resolvers = {
         getLoveList,
         getLove,
         getNotificationList,
+        getNotificationCount,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;
