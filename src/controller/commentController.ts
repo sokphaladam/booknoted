@@ -37,6 +37,7 @@ export const getCommentList = async (p: any, args: any, ctx: any) => {
   let items: any[] = [];
   data.map((e: any)=>{
     e.user = ctx.userDataLoader.load(e.user_id)
+    e.book = knex('book').where('id', args.book_id).first();
     items.push(e);
   })
   return items;
