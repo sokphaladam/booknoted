@@ -2,6 +2,7 @@ const setting = require('../../knexfile');
 const knex = require('knex')(setting.development);
 import * as passwordHash from 'password-hash';
 import * as Faker from 'faker';
+import { generate } from '../generate';
 
 export const createUser = async (p: any, args: any) => {
   const data = args.data;
@@ -9,6 +10,7 @@ export const createUser = async (p: any, args: any) => {
   data.created_at = new Date();
   data.updated_at = new Date();
   data.picture = Faker.image.avatar();
+  data.token = generate(32).toString() + args.username;
   const res = await knex('user').insert(data).then(() => true);
   return res;
 }

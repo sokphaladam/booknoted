@@ -53,6 +53,17 @@ type Love {
     updated_at: String
 }
 
+type Notification {
+    id: ID,
+    user_id: Int,
+    type: String,
+    on_id: Int,
+    status: Boolean,
+    user: User,
+    created_at: String,
+    updated_at: String
+}
+
 input UserInput {
     first_name: String!,
     last_name: String!,
@@ -82,7 +93,8 @@ type Query {
     getPictureList: [Picture],
     getCommentList(book_id: Int!): [Comment]
     getLoveList: [Love]
-    getLove(book_id: Int!): Love
+    getLove(book_id: Int!): Love,
+    getNotificationList: [Notification]
 }
 
 type Mutation {
@@ -91,7 +103,8 @@ type Mutation {
     createBook(data: BookInput!): Boolean,
     singleUpload(file: Upload!): String,
     createLove(id: Int!): Boolean,
-    createComment(data: CommentInput!): Boolean
+    createComment(data: CommentInput!): Boolean,
+    setStatus(id: Int!): Boolean
 }
 
 type Subscription {
