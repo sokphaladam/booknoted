@@ -12,7 +12,7 @@ export const createComment = async (p: any, args: any, ctx: any) => {
       created_at: new Date(),
       updated_at: new Date()
     }).then( async () => {
-      await knex('book').update('comment', book.comment + 1);
+      await knex('book').update('comment', book.comment + 1).where('id', args.data.book_id);
     })
     ctx.pubsub.publish('Love', { CommentSubscription: true });
     return true;
