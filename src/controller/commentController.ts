@@ -28,7 +28,7 @@ export const createComment = async (p: any, args: any, ctx: any) => {
     });
     return true;
   } catch (error) {
-    return false;
+    return error;
   }
 }
 

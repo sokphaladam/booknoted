@@ -33,6 +33,7 @@ export const createNotificationList = async (data: any) => {
 export const setStatus = async (p: any, args: any, ctx: any) => {
   try {
     await knex('notification').where('id', args.id).update({ status: true });
+    ctx.pubsub.publish('Love', { CommentSubscription: true });
     return true;
   } catch (error) {
     return error;
