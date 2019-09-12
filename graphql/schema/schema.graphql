@@ -41,6 +41,7 @@ type Comment {
     id: ID,
     book_id: Int,
     user_id: Int,
+    user: User
     comment: String,
     created_at: String,
     updated_at: String

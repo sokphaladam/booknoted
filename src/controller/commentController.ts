@@ -32,7 +32,12 @@ export const createComment = async (p: any, args: any, ctx: any) => {
   }
 }
 
-export const getCommentList = async (p: any, args: any) => {
+export const getCommentList = async (p: any, args: any, ctx: any) => {
   const data = await knex('comment').where('book_id', args.book_id);
-  return data;
+  let items: any[] = [];
+  data.map((e: any)=>{
+    e.user = ctx.userDataLoader.load(e.user_id)
+    items.push(e);
+  })
+  return items;
 }

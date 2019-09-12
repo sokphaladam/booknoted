@@ -9,7 +9,7 @@ const getLove = async (user_id: number, book_id: number) => {
 }
 
 export const getBookList = async (p: any, args: any, ctx: any) => {
-  const data = await knex('book');
+  const data = await knex('book').orderBy('id', 'desc');
   const user = await ctx.meLoader();
   let items: any[] = [];
   data.map((x: any) => {
