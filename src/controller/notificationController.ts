@@ -19,8 +19,9 @@ export const getNotificationCount = async (p: any, args: any, ctx: any) => {
   const data = await knex('notification').where('user_id', user.id);
   let count: number = 0;
   data.map((e: any) => {
-    e.status = false;
-    count++;
+    if(e.status === false){
+      count++;
+    }
   });
 
   return count;
