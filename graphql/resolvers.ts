@@ -4,6 +4,7 @@ import { createUser, getUserList, getUser, login, me } from '../src/controller/u
 import { getBookList, createBook, getBook } from '../src/controller/bookController';
 import { createLove, getLoveList, getLove } from '../src/controller/loveController';
 import { createComment, getCommentList } from '../src/controller/commentController';
+import { getNotificationList, setStatus, getNotificationCount } from '../src/controller/notificationController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
 
@@ -17,6 +18,8 @@ export const resolvers = {
         getCommentList,
         getLoveList,
         getLove,
+        getNotificationList,
+        getNotificationCount,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;
@@ -28,6 +31,7 @@ export const resolvers = {
         createBook,
         createLove,
         createComment,
+        setStatus,
         singleUpload: async (parent: any, args: any) => {
             const { createReadStream, filename } = await args.file;
             const uuid = generate(8);
