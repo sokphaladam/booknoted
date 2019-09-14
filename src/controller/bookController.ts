@@ -29,11 +29,13 @@ export const getBook = async (p: any, args: any, ctx: any) => {
 }
 
 export const createBook = async (p: any, args: any, ctx: any) =>{ 
-  const data = args.data;
+  let data: any = {};
   data.created_at = new Date();
   data.updated_at = new Date();
   data.love = 0;
   data.comment = 0;
+  data.picture = `["${args.data.picture.join('\",\"')}"]`;
+  data.title = args.data.title; 
   data.user_id = await ctx.meLoader().then((r: any) => r.id);
   const res = await knex('book').insert(data).then((r: any) => true);
   return res;

@@ -21,7 +21,7 @@ type User {
 type Book {
     id: ID,
     title: String,
-    picture: String,
+    picture: [String],
     love: Int,
     comment: Int,
     created_at: String,
@@ -77,9 +77,7 @@ input UserInput {
 
 input BookInput {
     title: String,
-    picture: [String],
-    love: Int,
-    comment: Int  
+    picture: [String]
 }
 
 input CommentInput {
