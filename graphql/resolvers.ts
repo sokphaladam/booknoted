@@ -41,10 +41,10 @@ export const resolvers = {
             });
 
             return await knex('picture').insert({
-                filename: `/images/${uuid}${filename}`,
+                filename: `http://104.248.156.237:4000/images/${uuid}${filename}`,
                 created_at: new Date(),
                 updated_at: new Date()
-            }).then(() => `/images/${uuid}${filename}`);
+            }).then(() => `http://104.248.156.237:4000/images/${uuid}${filename}`);
         }
     },
     Subscription: {

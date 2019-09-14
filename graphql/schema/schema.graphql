@@ -77,7 +77,7 @@ input UserInput {
 
 input BookInput {
     title: String,
-    picture: String,
+    picture: [String],
     love: Int,
     comment: Int  
 }

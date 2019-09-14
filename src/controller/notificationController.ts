@@ -3,7 +3,7 @@ const knex = require('knex')(setting.development);
 
 export const getNotificationList = async (p: any, args: any, ctx: any) => {
   const user = await ctx.meLoader();
-  const data = await knex('notification').where('user_id', user.id);
+  const data = await knex('notification').where('user_id', user.id).orderBy('id', 'desc');
   let items: any[] = [];
   data.map((e: any) => {
     e.user = ctx.userDataLoader.load(e.action_by);
