@@ -55,6 +55,13 @@ type Love {
     updated_at: String
 }
 
+type Friend {
+    user: User,
+    approved: Boolean,
+    created_at: String,
+    updated_at: String
+}
+
 type Notification {
     id: ID,
     user_id: Int,
@@ -65,6 +72,19 @@ type Notification {
     user: User,
     created_at: String,
     updated_at: String
+}
+
+type Message {
+    sender: Int!,
+    receiver: Int!,
+    content: String!,
+    type: String
+}
+
+input messageInput {
+    receiver: Int!,
+    content: String!,
+    type: String
 }
 
 input UserInput {
@@ -96,7 +116,9 @@ type Query {
     getLoveList: [Love]
     getLove(book_id: Int!): Love,
     getNotificationList: [Notification],
-    getNotificationCount: Int
+    getNotificationCount: Int,
+    getFriendList: [Friend],
+    getMessage(sender: Int!, receiver: Int!): [Message]
 }
 
 type Mutation {
@@ -106,10 +128,14 @@ type Mutation {
     singleUpload(file: Upload!): String,
     createLove(id: Int!): Boolean,
     createComment(data: CommentInput!): Boolean,
-    setStatus(id: Int!): Boolean
+    setStatus(id: Int!): Boolean,
+    FriendAdd(id: Int!): Boolean,
+    FriendApproved(id: Int!): Boolean,
+    sendMessage(data: messageInput!): Boolean
 }
 
 type Subscription {
     LoveSubscription: Boolean,
-    CommentSubscription: Boolean
+    CommentSubscription: Boolean,
+    MessageSubscription: Message
 }

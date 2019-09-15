@@ -5,6 +5,8 @@ import { getBookList, createBook, getBook } from '../src/controller/bookControll
 import { createLove, getLoveList, getLove } from '../src/controller/loveController';
 import { createComment, getCommentList } from '../src/controller/commentController';
 import { getNotificationList, setStatus, getNotificationCount } from '../src/controller/notificationController';
+import { getFriendList, FriendAdd, FriendApproved } from '../src/controller/FriendController';
+import { sendMessage, getMessage } from '../src/controller/messageController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
 
@@ -20,6 +22,8 @@ export const resolvers = {
         getLove,
         getNotificationList,
         getNotificationCount,
+        getFriendList,
+        getMessage,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;
@@ -32,6 +36,9 @@ export const resolvers = {
         createLove,
         createComment,
         setStatus,
+        FriendAdd,
+        FriendApproved,
+        sendMessage,
         singleUpload: async (parent: any, args: any) => {
             const { createReadStream, filename } = await args.file;
             const uuid = generate(8);
@@ -49,10 +56,15 @@ export const resolvers = {
     },
     Subscription: {
         LoveSubscription: {
-            subscribe: (parent: any, args: any, ctx: any) => ctx.pubsub.asyncIterator('Love')
+            subscribe: async (parent: any, args: any, ctx: any) => await ctx.pubsub.asyncIterator('Love')
         },
         CommentSubscription: {
-            subscribe: (parent: any, args: any, ctx: any) => ctx.pubsub.asyncIterator('Comment')
+            subscribe: async (parent: any, args: any, ctx: any) => await ctx.pubsub.asyncIterator('Comment')
+        },
+        MessageSubscription: {
+            subscribe: async (parent: any, args: any, ctx: any) => {
+                return await ctx.pubsub.asyncIterator('Message');
+            }
         }
     }
 }
