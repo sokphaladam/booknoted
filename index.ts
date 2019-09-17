@@ -1,4 +1,4 @@
-import { ApolloServer, gql, PubSub } from 'apollo-server-express';
+import { ApolloServer, PubSub } from 'apollo-server-express';
 const setting = require('./knexfile');
 const knex = require('knex')(setting.development);
 import 'graphql-import-node';
@@ -12,9 +12,14 @@ const typeDefs = require('./graphql/schema/schema.graphql');
 const pubsub = new PubSub();
 
 const server = new ApolloServer(
-    {
+    {   
         typeDefs,
         resolvers,
+        engine: {
+            apiKey: "service:IWatchingYou-2272:eGNw8fjiZkQJcuekYpnzTg",
+            schemaTag: 'development',
+            debugPrintReports: true
+        },
         subscriptions: {
             onConnect: () => console.log('Connected to websocket'),
             onDisconnect: () => console.log('Disconnected to websocket')
