@@ -77,13 +77,26 @@ type Notification {
 type Message {
     sender: Int!,
     receiver: Int!,
-    content: String!,
-    type: String
+    content: String,
+    picture: String,
+    type: String,
+    created_at: String
+}
+
+type History {
+    user: User,
+    sender: Int!,
+    receiver: Int!,
+    content: String,
+    picture: String,
+    type: String,
+    created_at: String
 }
 
 input messageInput {
     receiver: Int!,
     content: String!,
+    picture: String,
     type: String
 }
 
@@ -119,6 +132,7 @@ type Query {
     getNotificationCount: Int,
     getFriendList: [Friend],
     getMessage(sender: Int!, receiver: Int!): [Message]
+    getMessageHistory: [Message]
 }
 
 type Mutation {

@@ -6,7 +6,7 @@ import { createLove, getLoveList, getLove } from '../src/controller/loveControll
 import { createComment, getCommentList } from '../src/controller/commentController';
 import { getNotificationList, setStatus, getNotificationCount } from '../src/controller/notificationController';
 import { getFriendList, FriendAdd, FriendApproved } from '../src/controller/FriendController';
-import { sendMessage, getMessage } from '../src/controller/messageController';
+import { sendMessage, getMessage, getMessageHistory } from '../src/controller/messageController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
 
@@ -24,6 +24,7 @@ export const resolvers = {
         getNotificationCount,
         getFriendList,
         getMessage,
+        getMessageHistory,
         getPictureList: async () => {
             const data = await knex('picture');
             return data;

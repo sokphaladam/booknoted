@@ -18,7 +18,7 @@ const server = new ApolloServer(
         engine: {
             apiKey: "service:IWatchingYou-2272:eGNw8fjiZkQJcuekYpnzTg",
             schemaTag: 'development',
-            debugPrintReports: true
+            debugPrintReports: false
         },
         subscriptions: {
             onConnect: () => console.log('Connected to websocket'),
