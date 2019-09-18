@@ -6,7 +6,7 @@ import { createLove, getLoveList, getLove } from '../src/controller/loveControll
 import { createComment, getCommentList } from '../src/controller/commentController';
 import { getNotificationList, setStatus, getNotificationCount } from '../src/controller/notificationController';
 import { getFriendList, FriendAdd, FriendApproved } from '../src/controller/FriendController';
-import { sendMessage, getMessage, getMessageHistory } from '../src/controller/messageController';
+import { sendMessage, getMessage, getMessageHistory, seenMessage } from '../src/controller/messageController';
 import { createWriteStream } from 'fs';
 import { generate } from '../src/generate';
 
@@ -40,6 +40,7 @@ export const resolvers = {
         FriendAdd,
         FriendApproved,
         sendMessage,
+        seenMessage,
         singleUpload: async (parent: any, args: any) => {
             const { createReadStream, filename } = await args.file;
             const uuid = generate(8);
