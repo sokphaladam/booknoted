@@ -26,12 +26,25 @@ export const getMessage = async (parent: any, args: any, ctx: any) => {
 }
 
 export const getMessageHistory = async (parent: any, args: any, ctx: any) => {
+
   const user = await ctx.meLoader();
-  const history = await knex('message_history').where('receiver', user.id);
-  history.map((x: any)=>{
-    x.user = ctx.userDataLoader.load(x.sender)
-  })
-  return history;
+  const userList = await knex('user');
+  let items: any[] = [];
+
+  for (const x of userList) {
+    const a = await getgetMessageHistoryBySendReceiver(x.id, user.id);
+    if(x.id !== user.id){
+      items.push({
+        user: x,
+        content: a != undefined ? a.content : "",
+        type: a != undefined ? a.type : "text",
+        count: a != undefined ? a.count : 0,
+        created_at: a != undefined ? a.created_at : new Date(),
+        updated_at: a != undefined ? a.updated_at : new Date()
+      })
+    }
+  }
+  return items;
 }
 
 export const seenMessage = async (parent: any, args: any, ctx: any) => {
@@ -44,6 +57,11 @@ export const seenMessage = async (parent: any, args: any, ctx: any) => {
   } catch (error) {
     return error;
   }
+}
+
+const getgetMessageHistoryBySendReceiver = async (sender: number, receiver: number) => {
+  const data = await knex('message_history').where({ receiver, sender }).first();
+  return data;
 }
 
 const updateHistory = async (data: any) => {

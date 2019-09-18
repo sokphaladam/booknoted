@@ -85,8 +85,6 @@ type Message {
 
 type History {
     user: User,
-    sender: Int!,
-    receiver: Int!,
     content: String,
     type: String,
     count: Int,
