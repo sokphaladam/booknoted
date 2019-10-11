@@ -6,8 +6,7 @@ export async function up(knex: Knex): Promise<any> {
         table.increments();
         table.specificType('title', 'longtext');
         table.specificType('picture', 'json');
-        table.integer('user_id').unsigned();
-        table.foreign('user_id').references('id').inTable('user');
+        table.integer('user_id');
         table.timestamps();
     }).then();
 }
