@@ -29,6 +29,30 @@ const bookData = [
         created_at: new Date(),
         updated_at: new Date()
     },
+    {
+        id: 2,
+        title: 'The Moon being round, half of it is lit up by the sun. As it goes around (or orbits) the Earth, sometimes the side that people on Earth can see is all lit brightly. Other times only a small part of the side we see is lit. This is because the Moon does not send out its own light. People only see the parts that are being lit by sunlight. These different stages are called Phases of the Moon.',
+        picture: '[\"http://104.248.156.237:4000/images/VxfhJNtJpexels-photo-2387069.jpeg\",\"http://104.248.156.237:4000/images/1vmRznMapexels-photo-2683768.jpeg\", \"http://104.248.156.237:4000/images/UAa3Okqbpexels-photo-1358833.jpeg\"]',
+        user_id: 2,
+        created_at: new Date(),
+        updated_at: new Date()
+    },
+    {
+        id: 3,
+        title: 'Motorbikes up to 125cc can be ridden legally without a license, however, check your travel insurance wording. Many insurers will require a license from the destination country or your home country, so this loophole may not work for you!',
+        picture: '[\"http://104.248.156.237:4000/images/A8At6LCZpexels-photo-1413412.jpeg\"]',
+        user_id: 3,
+        created_at: new Date(),
+        updated_at: new Date()
+    },
+    {
+        id: 4,
+        title: 'The Moon being round, half of it is lit up by the sun. As it goes around (or orbits) the Earth, sometimes the side that people on Earth can see is all lit brightly. Other times only a small part of the side we see is lit. This is because the Moon does not send out its own light. People only see the parts that are being lit by sunlight. These different stages are called Phases of the Moon.',
+        picture: '[\"http://104.248.156.237:4000/images/A8At6LCZpexels-photo-1413412.jpeg\"]',
+        user_id: 4,
+        created_at: new Date(),
+        updated_at: new Date()
+    },
 ]
 
 export async function seed(knex: Knex): Promise<any> {
